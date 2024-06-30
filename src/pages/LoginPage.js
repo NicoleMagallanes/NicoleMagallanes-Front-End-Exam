@@ -14,10 +14,13 @@ const LoginPage = ({ darkMode }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://nicole-fe-server.netlify.app/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.status === 200) {
         login();
         navigate("/");
