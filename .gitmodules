@@ -1,0 +1,3 @@
+[submodule "calendar-app/fe-exam-mock-server"]
+	path = calendar-app/fe-exam-mock-server
+	url = https://github.com/NicoleMagallanes/fe-exam-mock-server.git
