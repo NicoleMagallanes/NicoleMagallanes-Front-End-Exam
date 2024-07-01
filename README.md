@@ -6,35 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Here are my Calendar App images:
 
-<!-- Small Images with Full View -->
-<div>
-  <img src="https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg" alt="Appointment Dark" style="max-width: 200px; cursor: pointer;" onclick="openModal('https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg')">
-  <img src="https://i.ibb.co/Zhc3NKr/Appointment.jpg" alt="Appointment" style="max-width: 200px; cursor: pointer;" onclick="openModal('https://i.ibb.co/Zhc3NKr/Appointment.jpg')">
-  <img src="https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg" alt="Sign In Dark" style="max-width: 200px; cursor: pointer;" onclick="openModal('https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg')">
-  <img src="https://i.ibb.co/SRF0FTS/Sign-In.jpg" alt="Sign In" style="max-width: 200px; cursor: pointer;" onclick="openModal('https://i.ibb.co/SRF0FTS/Sign-In.jpg')">
-</div>
-
-<!-- Modal for Full Size View -->
-<div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="img01">
-</div>
-
-<script>
-// Function to open the modal with full size image
-function openModal(imageUrl) {
-  var modal = document.getElementById("myModal");
-  var modalImg = document.getElementById("img01");
-  modal.style.display = "block";
-  modalImg.src = imageUrl;
-}
-
-// Function to close the modal
-function closeModal() {
-  var modal = document.getElementById("myModal");
-  modal.style.display = "none";
-}
-</script>
+- [![Appointment Dark JPG](https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg)](https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg){: style="width: 150px; height: auto;"}
+- [![Appointment JPG](https://i.ibb.co/Zhc3NKr/Appointment.jpg)](https://i.ibb.co/Zhc3NKr/Appointment.jpg){: style="width: 150px; height: auto;"}
+- [![Sign In Dark JPG](https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg)](https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg){: style="width: 150px; height: auto;"}
+- [![Sign In JPG](https://i.ibb.co/SRF0FTS/Sign-In.jpg)](https://i.ibb.co/SRF0FTS/Sign-In.jpg){: style="width: 150px; height: auto;"}
 
 ## Available Scripts
 
