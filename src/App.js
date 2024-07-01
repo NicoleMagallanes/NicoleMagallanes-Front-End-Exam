@@ -1,7 +1,10 @@
-// src/App.js
-
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthProvider } from "./contexts/AuthContext";
 import LoginPage from "./pages/LoginPage";
@@ -20,34 +23,37 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Router>
-          <div
-            className={`flex flex-col min-h-screen ${
-              darkMode
-                ? "dark bg-gray-800 text-white"
-                : "bg-white text-gray-900"
-            }`}
-          >
-            <div className="container mx-auto px-4 py-8 flex justify-between items-center">
-              <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-              <LogoutButton darkMode={darkMode} />
-            </div>
-            <div className="flex-grow">
-              <Routes>
-                <Route
-                  path="/login"
-                  element={<LoginPage darkMode={darkMode} />}
-                />
-                <Route
-                  path="/"
-                  element={<AppointmentsPage darkMode={darkMode} />}
-                />
-              </Routes>
-            </div>
-            <SocialMediaFooter darkMode={darkMode} />
-          </div>
+          <AppContent darkMode={darkMode} setDarkMode={setDarkMode} />
         </Router>
       </AuthProvider>
     </QueryClientProvider>
+  );
+};
+
+const AppContent = ({ darkMode, setDarkMode }) => {
+  const location = useLocation();
+
+  // Determine login page
+  const isLoginPage = location.pathname === "/login";
+
+  return (
+    <div
+      className={`flex flex-col min-h-screen ${
+        darkMode ? "dark bg-gray-800 text-white" : "bg-white text-gray-900"
+      }`}
+    >
+      <div className="container mx-auto px-4 py-8 flex justify-between items-center">
+        <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
+        {!isLoginPage && <LogoutButton darkMode={darkMode} />}
+      </div>
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/login" element={<LoginPage darkMode={darkMode} />} />
+          <Route path="/" element={<AppointmentsPage darkMode={darkMode} />} />
+        </Routes>
+      </div>
+      <SocialMediaFooter darkMode={darkMode} />
+    </div>
   );
 };
 

@@ -2,38 +2,55 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import bcrypt from "bcryptjs";
 
 const LoginPage = ({ darkMode }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
 
+  // Function to handle login
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://nicole-fe-server.netlify.app/login",
-        {
-          email,
-          password,
+      const response = await axios.get("http://localhost:3000/users");
+      const users = response.data;
+      const user = users.find((user) => user.email === email);
+
+      if (user && bcrypt.compareSync(password, user.password)) {
+        if (rememberMe) {
+          localStorage.setItem(
+            "rememberedUser",
+            JSON.stringify({ email, password })
+          );
+        } else {
+          localStorage.removeItem("rememberedUser");
         }
-      );
-      if (response.status === 200) {
         login();
         navigate("/");
+      } else {
+        setError("Invalid email or password. Please try again.");
       }
     } catch (error) {
-      setError("Invalid email or password. Please try again.");
+      setError("Error logging in. Please try again later.");
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("rememberedUser");
+    setEmail("");
+    setPassword("");
+    navigate("/login");
   };
 
   return (
     <div
       className={`min-h-60 flex items-center justify-center mt-20 ${
-        darkMode ? "dark bg-gray-800" : "bg-gray-0"
+        darkMode ? "dark bg-gray-800" : "bg-gray-100"
       }`}
     >
       <div
@@ -69,7 +86,7 @@ const LoginPage = ({ darkMode }) => {
                 id="email-address"
                 name="email"
                 type="email"
-                autoComplete="email"
+                autoComplete="off"
                 required
                 className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
                   darkMode
@@ -86,7 +103,7 @@ const LoginPage = ({ darkMode }) => {
                 id="password"
                 name="password"
                 type="password"
-                autoComplete="current-password"
+                autoComplete="off"
                 required
                 className={`appearance-none rounded-none relative block w-full px-3 py-2 border ${
                   darkMode
@@ -98,6 +115,23 @@ const LoginPage = ({ darkMode }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+          </div>
+
+          <div className="flex items-center">
+            <input
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            <label
+              htmlFor="remember-me"
+              className="ml-2 block text-sm text-gray-900 dark:text-gray-300"
+            >
+              Remember me
+            </label>
           </div>
 
           <div>

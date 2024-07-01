@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { FaCalendarAlt } from "react-icons/fa"; // Calendar icon
 import { MdArrowDropDown } from "react-icons/md"; // Dropdown arrow icon
 
 const AddAppointmentForm = ({ darkMode }) => {

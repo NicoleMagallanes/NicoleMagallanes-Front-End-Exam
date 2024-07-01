@@ -92,8 +92,8 @@ const AppointmentsPage = ({ darkMode }) => {
   return (
     <div
       className={`container mx-auto px-4 py-8 bg-white${
-        darkMode ? "dark" : ""
-      } bg-gray-800 text-gray-900`}
+        darkMode ? " dark:bg-gray-800 text-white" : " text-gray-900"
+      }`}
     >
       <h1
         className={`text-3xl font-bold mb-4 ${
@@ -159,7 +159,7 @@ const AppointmentsPage = ({ darkMode }) => {
               <span
                 className={`inline-block px-2 py-1 rounded ${
                   appointment.status === "Completed"
-                    ? "bg-green-500  text-white"
+                    ? "bg-green-500 text-white"
                     : "bg-yellow-500 opacity-50 text-gray-800"
                 }`}
               >
