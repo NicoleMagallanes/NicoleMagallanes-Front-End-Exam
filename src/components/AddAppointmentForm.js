@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { MdArrowDropDown } from "react-icons/md"; // Dropdown arrow icon
+import { MdArrowDropDown } from "react-icons/md";
 
 const AddAppointmentForm = ({ darkMode }) => {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("Pending");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true); // Start submission
+    setIsSubmitting(true);
 
     try {
       await axios.post("http://localhost:3000/appointments", {
@@ -18,14 +18,14 @@ const AddAppointmentForm = ({ darkMode }) => {
         date,
         status,
       });
-      // Optionally, refresh appointments list
+
       setName("");
       setDate("");
       setStatus("Pending");
     } catch (error) {
       console.error("Failed to add appointment", error);
     } finally {
-      setIsSubmitting(false); // End submission
+      setIsSubmitting(false);
     }
   };
 

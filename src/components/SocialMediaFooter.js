@@ -1,5 +1,3 @@
-// src/components/SocialMediaFooter.js
-
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 

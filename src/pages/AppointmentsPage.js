@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { useAuth } from "../contexts/AuthContext";
 import { Navigate } from "react-router-dom";
-import AddAppointmentForm from "../components/AddAppointmentForm"; // Import AddAppointmentForm component
+import AddAppointmentForm from "../components/AddAppointmentForm";
 
 const AppointmentsPage = ({ darkMode }) => {
   const { isLoggedIn } = useAuth();
