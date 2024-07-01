@@ -1,10 +1,10 @@
-const path = require("path");
+const { override } = require("customize-cra");
 
-module.exports = function override(config) {
+module.exports = override((config) => {
   config.resolve.fallback = {
     ...config.resolve.fallback,
     crypto: require.resolve("crypto-browserify"),
   };
 
   return config;
-};
+});
