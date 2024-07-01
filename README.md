@@ -6,10 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Here are my Calendar App images:
 
-- [![Appointment Dark JPG](https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg)](https://i.ibb.co/F3bnpsB/Appointment-Dark-JPG.jpg){: style="width: 150px; height: auto;"}
-- [![Appointment JPG](https://i.ibb.co/Zhc3NKr/Appointment.jpg)](https://i.ibb.co/Zhc3NKr/Appointment.jpg){: style="width: 150px; height: auto;"}
-- [![Sign In Dark JPG](https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg)](https://i.ibb.co/hm7BbSR/Sign-In-Dark-JPG.jpg){: style="width: 150px; height: auto;"}
-- [![Sign In JPG](https://i.ibb.co/SRF0FTS/Sign-In.jpg)](https://i.ibb.co/SRF0FTS/Sign-In.jpg){: style="width: 150px; height: auto;"}
+![Collage Pic](https://i.ibb.co/59k0fsp/gITHUB.png)
 
 ## Available Scripts
 
