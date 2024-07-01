@@ -16,7 +16,7 @@ const AppointmentsPage = ({ darkMode }) => {
     isLoading,
     isError,
   } = useQuery(["appointments", filterStatus, searchTerm], async () => {
-    let url = "https://nicole-fe-server.netlify.app/appointments"; // Update URL
+    let url = "http://localhost:3000/appointments";
     if (filterStatus !== "all") {
       url += `?status=${filterStatus}`;
     }
@@ -28,8 +28,7 @@ const AppointmentsPage = ({ darkMode }) => {
 
   const toggleStatusMutation = useMutation(
     (id) =>
-      axios.patch(`https://nicole-fe-server.netlify.app/appointments/${id}`, {
-        // Update URL
+      axios.patch(`http://localhost:3000/appointments/${id}`, {
         status:
           appointments.find((appointment) => appointment.id === id).status ===
           "Completed"
@@ -52,8 +51,7 @@ const AppointmentsPage = ({ darkMode }) => {
   );
 
   const deleteAppointmentMutation = useMutation(
-    (id) =>
-      axios.delete(`https://nicole-fe-server.netlify.app/appointments/${id}`), // Update URL
+    (id) => axios.delete(`http://localhost:3000/appointments/${id}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries([
@@ -187,7 +185,7 @@ const AppointmentsPage = ({ darkMode }) => {
                 } text-white py-1 px-4 rounded-md focus:outline-none`}
                 onClick={() => handleToggleStatus(appointment.id)}
               >
-                {appointment.status === "Completed" ? "Update" : "Update"}
+                {appointment.status === "Completed" ? "Update" : "Complete"}
               </button>
             </div>
           </div>
